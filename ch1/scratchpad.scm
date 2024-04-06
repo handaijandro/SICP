@@ -1,0 +1,5 @@
+(define (fun x)
+  (cond (> x 10) ("hello")
+        (else ("no"))
+        )
+  )
