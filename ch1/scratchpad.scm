@@ -1,27 +1,16 @@
-(define (sqrt-iter guess x)
-  (if (good-enough? guess x)
-    guess
-    (sqrt-iter (improve guess x)
-               x)))
-(define (improve guess x)
-  (average guess (/ x guess)))
+(define (factorial x)
+  (if (= x 1)
+    1
+    (* x (factorial (- x 1 )))))
+; this is a recursive procedure that defines a linear recursive process. O(n) time O(n) memory.
 
-(define (average x y)
-  (/ (+ x y) 2))
+(define (fact-iter n)
+  (define (iter count mult)
+    (if (> count n)
+      mult
+      (iter (1+ count) (* count mult))))
+  (iter 1 1))
+; tail recursive implementation of factorial. O(n) time and (O(1)) memory
 
-(define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.001))
 
-(define (sqrt x)
-  (sqrt-iter 1.0 x))
-
-(define (new-if predicate then-clause else-clause)
-  (cond (predicate then-clause)
-        (else else-clause)))
-
-(define (sqrt-iter-new guess x)
-  (new-if (good-enough? guess x)
-          guess
-          (sqrt-iter-new (improve guess x)
-                     x)))
 
