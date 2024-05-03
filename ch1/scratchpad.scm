@@ -12,5 +12,11 @@
   (iter 1 1))
 ; tail recursive implementation of factorial. O(n) time and (O(1)) memory
 
-
+(define (is-even? x)
+  (= (remainder x 2) 0))
+(define (exp b n)
+  (cond ((= n 0) 1)
+        ((= n 1) b)
+        ((is-even? n) (square (exp b (/ n 2))))
+        (else (* b (exp b (- n 1))))))
 
